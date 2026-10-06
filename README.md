@@ -1,11 +1,11 @@
-# MLEnd Hums and Whistles II: Song Classification 🎵
+# MLEnd Hums and Whistles II: Song Classification 
 
-This repository contains my mini-project for ECS7020P Principles of Machine Learning, where I predict the title of a song from a 10-second hummed or whistled recording.
+This repository contains my mini-project for Principles of Machine Learning, where I predict the title of a song from a 10-second hummed or whistled recording.
 
 
 ## About the Project ❓
 
-The task is a multi-class classification problem: given a 10-second audio recording of someone humming or whistling a song, predict which song it is. The project uses the 400-sample subset of the **MLEnd Hums and Whistles II Dataset**, which contains 8 songs with 50 recordings each.
+The task is a multi-class classification problem: given a 10-second audio recording of someone humming or whistling a song, predict which song it is. The project uses the 400-sample subset of the MLEnd Hums and Whistles II Dataset, which contains 8 songs with 50 recordings each.
 
 Raw audio is converted into fixed-length numerical features (MFCC and Chroma), and three machine learning pipelines are trained and compared. The aim of the project is to show a sound methodology and honest evaluation, not to reach a high score on a very difficult problem.
 
@@ -42,7 +42,7 @@ For practical implementation, Python and its libraries for audio processing, sci
 |---|---|
 | **Input** | 10-second audio recordings (400 samples, 8 songs, 50 recordings per song) |
 | **Pre-processing** | Resampled to 22,050 Hz, padded or trimmed to exactly 10 seconds, normalised amplitude |
-| **Feature extraction** | **MFCC** (spectral shape, with delta and delta-delta) and **Chroma** (pitch content) |
+| **Feature extraction** | MFCC (spectral shape, with delta and delta-delta) and Chroma (pitch content) |
 | **Fixed-length vectors** | Summarised each feature over time using its mean and standard deviation |
 | **Data split** | Stratified 70/30 split: 280 training and 120 validation samples |
 | **Models** | Logistic Regression (baseline) and Support Vector Machine (SVM) |
@@ -58,9 +58,9 @@ For practical implementation, Python and its libraries for audio processing, sci
 
 | Pipeline | Features | Classifier | Validation Accuracy |
 |---|---|---|---|
-| A | MFCC | Logistic Regression | 0.2083 |
-| B | MFCC | SVM | 0.2167 |
-| **C** | **Chroma** | **SVM** | **0.3250** |
+| **A** | MFCC | Logistic Regression | 0.2083 |
+| **B** | MFCC | SVM | 0.2167 |
+| **C** | Chroma | SVM | 0.3250 |
 
 With 8 balanced classes, random guessing would score about 12.5%, so all three pipelines beat chance. Pipeline C (Chroma + SVM) performed best, and its confusion matrix showed fewer misclassifications than A and B.
 
